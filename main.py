@@ -10,21 +10,7 @@ def min_cost(n, h):
     [5, 4, 3, 2, 1]
     """
 
-    res = []
-    for i in range(n):
-        minimal_cost = h[i]
-        for j in range(n):
-            if i == j:
-                continue
-            else:
-                city_range = abs(i-j)
-                cost = h[j] + city_range
-
-                if cost < minimal_cost:
-                    minimal_cost = cost
-        res.append(minimal_cost)
-
-    return res
+    return [min(h[j] + abs(i-j) for j in range(n)) for i in range(n)]
 
 
 doctest.testmod()
